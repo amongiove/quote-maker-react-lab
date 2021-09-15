@@ -37,29 +37,32 @@ describe('QuoteCard Component', () => {
 
 
   it('renders quote content from props.quote', () => {
+    store = createStore(rootReducer)
     
-    wrapper = mount(<QuoteCard quote={quoteOne} />)
+    wrapper = mount(<Provider store={store}><QuoteCard quote={quoteOne} /></Provider>)
     expect(wrapper.html()).to.include('test quote')
 
-    wrapperTwo = mount(<QuoteCard quote={quoteTwo} />)
+    wrapperTwo = mount(<Provider store={store}><QuoteCard quote={quoteTwo} /></Provider>)
     expect(wrapperTwo.html()).to.include('testing this quote')
   });
 
   it('renders quote author from props.quote', () => {
-    
-    wrapper = mount(<QuoteCard quote={quoteOne} />)
+    store = createStore(rootReducer)
+
+    wrapper = mount(<Provider store={store}><QuoteCard quote={quoteOne} /></Provider>)
     expect(wrapper.html()).to.include('test author')
 
-    wrapperTwo = mount(<QuoteCard quote={quoteTwo} />)
+    wrapperTwo = mount(<Provider store={store}><QuoteCard quote={quoteTwo} /></Provider>)
     expect(wrapperTwo.html()).to.include('authoring this test')
   });
 
   it('renders quote votes from props.quote', () => {
-    
-    wrapper = mount(<QuoteCard quote={quoteOne} />)
+    store = createStore(rootReducer)
+
+    wrapper = mount(<Provider store={store}><QuoteCard quote={quoteOne} /></Provider>)
     expect(wrapper.html()).to.include('0')
 
-    wrapperTwo = mount(<QuoteCard quote={quoteTwo} />)
+    wrapperTwo = mount(<Provider store={store}><QuoteCard quote={quoteTwo} /></Provider>)
     expect(wrapperTwo.html()).to.include('10')
   });
 })
